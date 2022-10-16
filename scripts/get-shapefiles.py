@@ -114,8 +114,9 @@ def download_file(
                         stderr=subprocess.STDOUT) != 0:
                     sys.exit("\n\n   'curl' error: download failed.\n")
             sys.stdout.flush()
-
-        u = urllib2.urlopen(url)
+        
+        req = urllib2.Request(url, data=None, headers={"User-Agent":"Mozilla/5.0 (X11; Linux x86_64; rv:104.0) Gecko/20100101 Firefox/104.0"})
+        u = urllib2.urlopen(req)
         meta = u.info()
 
         # Compare dates and sizes
